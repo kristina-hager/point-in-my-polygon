@@ -17,8 +17,7 @@ import com.google.android.gms.location.LocationServices;
 
 import java.text.BreakIterator;
 
-public class DisplayMessageActivity extends ActionBarActivity
-        {
+public class DisplayMessageActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class DisplayMessageActivity extends ActionBarActivity
         messageTextView.setTextSize(40);
         messageTextView.setText(message);
         setContentView(messageTextView);
-        
+
     }
 
 //    @Override

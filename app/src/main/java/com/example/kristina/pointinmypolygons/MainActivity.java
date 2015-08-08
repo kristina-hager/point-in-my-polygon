@@ -36,44 +36,37 @@ public class MainActivity extends ActionBarActivity
         LocationListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    protected static final String TAG = "MainActivity";
-
     public final static String EXTRA_MESSAGE = "com.example.kristina.pointinmypolygons.MESSAGE";
-
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
-    private CharSequence mTitle;
-
+    protected static final String TAG = "MainActivity";
     //location related
     protected GoogleApiClient mGoogleApiClient;
     protected LocationRequest mLocationRequest;
     protected Location mCurrentLocation;
-
     //hold latest lat and long data
     protected TextView mLatitudeTextView;
     protected TextView mLongitudeTextView;
-    //protected TextView mLastUpdateTimeTextView;
-
     /**
      * Tracks the status of the location updates request. Value changes when the user presses the
      * Start Updates and Stop Updates buttons.
      */
     //TODO - hold this at true for now.
-            //src code on buttons: https://github.com/googlesamples/android-play-location/blob/master/LocationUpdates/app/src/main/java/com/google/android/gms/location/sample/locationupdates/MainActivity.java
-            //might want to allow user to turn this off at some point maybe?
-            //also, user might want to select a location on map vs being where he's at
+    //src code on buttons: https://github.com/googlesamples/android-play-location/blob/master/LocationUpdates/app/src/main/java/com/google/android/gms/location/sample/locationupdates/MainActivity.java
+    //might want to allow user to turn this off at some point maybe?
+    //also, user might want to select a location on map vs being where he's at
     protected Boolean mRequestingLocationUpdates;
-
     /**
      * Time when the location was updated represented as a String.
      */
     protected String mLastUpdateTime;
+    //protected TextView mLastUpdateTimeTextView;
+    /**
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     */
+    private NavigationDrawerFragment mNavigationDrawerFragment;
+    /**
+     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
+     */
+    private CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,7 +226,9 @@ public class MainActivity extends ActionBarActivity
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + connectionResult.getErrorCode());
     }
 
-    /** Called when user hits send button */
+    /**
+     * Called when user hits send button
+     */
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
@@ -244,7 +239,9 @@ public class MainActivity extends ActionBarActivity
 
     ///below are location related functions
 
-    /** set up location services */
+    /**
+     * set up location services
+     */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -313,6 +310,9 @@ public class MainActivity extends ActionBarActivity
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        public PlaceholderFragment() {
+        }
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -323,9 +323,6 @@ public class MainActivity extends ActionBarActivity
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
-        }
-
-        public PlaceholderFragment() {
         }
 
         @Override
